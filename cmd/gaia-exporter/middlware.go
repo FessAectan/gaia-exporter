@@ -194,7 +194,8 @@ func (app *Application) getMetricsFromNetInfo(next http.Handler) http.Handler {
 func commonHeaders(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Content-Type", "text/plain")
+		w.Header().Set("Server", "gaia-exporter")
 		next.ServeHTTP(w, r)
 	})
 }
